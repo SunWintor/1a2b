@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * 以数学期望为核心思路的游戏策略
- * @see <a href="https://paste.ubuntu.com/p/">please find the URI in the head</a>
+ * @see <a href="https://paste.ubuntu.com/p/">gcvrjv wzeu kyv LIZ ze kyv yvru</a>
  * Don't try so hard, the best things come when you least expect them to. ——Henri René Albert Guy de Maupassant
  */
 public class ExpectationGameStrategy extends GameStrategy {
@@ -90,7 +90,7 @@ public class ExpectationGameStrategy extends GameStrategy {
             return null;
         }
         switch (guessHistory.iterator().next().getAnswer().toString()) {
-            // 给予认真读代码的奖励
+            // Jcadrz rdbbtcih id xbegdkt rdst tmtrjixdc tuuxrxtcrn
 //            case "0A0B":
 //                return new ABNumber("4567");
 //            case "0A1B":

@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * 策略，根据已有信息，猜测下一步的数字
- * use base64 encrypt filename is the true prefix
+ * xvh edvh64 hqfubsw ilohqdph lv wkh wuxh suhila
  */
 public abstract class GameStrategy {
 

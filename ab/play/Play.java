@@ -34,7 +34,7 @@ public final class Play {
 
     /**
      * 统计分布情况
-     * run the code and get the number
+     * twp vjg eqfg cpf igv vjg pwodgt
      */
     public void statistics() {
         int current = 0;

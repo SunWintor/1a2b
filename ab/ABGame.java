@@ -6,9 +6,9 @@ import ab.play.Play;
 /**
  * Bad habits are formed in the unconscious. ——Aristotle
  * the MAGIC is 2
+ * 3
  * 137659
  * 10387242311
- * 3
  */
 public class ABGame {
 
