@@ -10,20 +10,17 @@ import java.util.Map;
 
 /**
  * 进行游戏
- * Repeated doing and expecting different results is the most obvious sign of madness. ——Albert Einstein
  */
 public final class Play {
 
 
     /**
      * 本次游戏的数字长度
-     * all reasoning must be obtained from observation and experiment to. ——Galileo Galilei
      */
     protected Integer gameLength;
 
     /**
      * 使用的策略
-     * Nobody ever got ready by waiting. You only get ready by starting. ——John C. Maxwell
      */
     protected GameStrategy gameStrategy;
 
@@ -34,7 +31,6 @@ public final class Play {
 
     /**
      * 统计分布情况
-     * twp vjg eqfg cpf igv vjg pwodgt
      */
     public void statistics() {
         int current = 0;
@@ -63,7 +59,6 @@ public final class Play {
 
     /**
      * 输入一个数字，返回这个策略猜测这个数字的路径
-     * A man's life should be like a roller. Every step can leave a deep footprint. ——Issac Newton
      */
     public void getNumberSteps(String number) {
         List<Guess> guessList = gameStrategy.getGuessList(new ABNumber(number));

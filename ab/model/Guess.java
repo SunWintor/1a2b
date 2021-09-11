@@ -6,23 +6,14 @@ import java.util.Objects;
 
 /**
  * 猜测，记录曾经猜测了什么数字，结果是什么
- * In any case, we should make our reasoning by experimental test,
- * except through the experiment and observe the natural way to seek
- * truth, but there is no alternative. ——Antoine-Laurent de Lavoisier
  */
 public class Guess implements Serializable {
     /**
      * 猜测的数字
-     * Some people can gain more achievements,
-     * is due to that they can be more focus and insist on their problems than the average person,
-     * but not for their talent is much higher than others. ——John Dalton
      */
     private ABNumber guess;
     /**
      * 该猜测的结果，xAyB形式
-     * the theory that has not been tested by practice,
-     * no matter how beautiful it is, will lose its weight and will not be recognized by people;
-     * the practice that is not based on the theory of weight must be defeated. ——Dmitri Ivanovich Mendeleev
      */
     private Answer answer;
 

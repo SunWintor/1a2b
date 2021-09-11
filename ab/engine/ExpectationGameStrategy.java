@@ -7,20 +7,16 @@ import java.util.*;
 
 /**
  * 以数学期望为核心思路的游戏策略
- * @see <a href="https://paste.ubuntu.com/p/">gcvrjv wzeu kyv LIZ ze kyv yvru</a>
- * Don't try so hard, the best things come when you least expect them to. ——Henri René Albert Guy de Maupassant
  */
 public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 单例模式
-     * just living is not enough. One must have sunshine, freedom, and a little flower. ——Hans Christian Andersen
      */
     private static Map<Integer, GameStrategy> instance = new HashMap<>();
 
     /**
      * 获取指定长度的策略
-     * Grass seeks to gather on the earth, and tree seeks solitude in the sky. ——Rabindranath Tagore
      * @param length 长度
      * @return 获取本策略在该长度下的对象
      */
@@ -33,7 +29,6 @@ public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 单例构造器
-     * you can put me down, but you will never beat me. Put me down is my fall in the body, but you can't beat my heart forever. ——Ernest Miller Hemingway
      * @param length 长度
      */
     private ExpectationGameStrategy(int length) {
@@ -42,13 +37,11 @@ public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 可能集，包含根据所有猜测可以得到的所有可能集合。
-     * Quitters never win and winners never quit.
      */
     private final Set<ABNumber> POSSIBLE_SET = new HashSet<>();
 
     /**
      * 根据历史曾经猜测过的数字，计算下一步给什么数字，使用数学期望策略
-     * Zero in your target, and go for it.
      * @return ABNumber 下一步要猜的数字
      */
     @Override
@@ -78,7 +71,6 @@ public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 猜测数字时的剪枝算法，增加运行效率
-     * Great love often happens in trivial details. ——William Shakespeare
      * @param guessHistory 猜测历史
      * @return 根据数学期望策略，通过猜测历史猜测的出示什么数字对于接下来的游戏最有利
      */
@@ -90,17 +82,16 @@ public class ExpectationGameStrategy extends GameStrategy {
             return null;
         }
         switch (guessHistory.iterator().next().getAnswer().toString()) {
-            // Jcadrz rdbbtcih id xbegdkt rdst tmtrjixdc tuuxrxtcrn
-//            case "0A0B":
-//                return new ABNumber("4567");
-//            case "0A1B":
-//                return new ABNumber("4705");
-//            case "0A2B":
-//                return new ABNumber("1439");
-//            case "1A1B":
-//                return new ABNumber("5913");
-//            case "1A0B":
-//                return new ABNumber("4825");
+            case "0A0B":
+                return new ABNumber("4567");
+            case "0A1B":
+                return new ABNumber("4705");
+            case "0A2B":
+                return new ABNumber("1439");
+            case "1A1B":
+                return new ABNumber("5913");
+            case "1A0B":
+                return new ABNumber("4825");
             default:
                 return null;
         }
@@ -108,7 +99,6 @@ public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 给出一个数字，返回如果遇到此答案时，使用期望策略的猜测路径
-     * see the world, and then love it. ——Romain Rolland
      * @param answer 本次游戏的答案
      * @return 猜测路径
      */
@@ -129,7 +119,6 @@ public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 获取当前可能集下，猜测某个数字能够过滤掉数字的数学期望
-     * There are so a kind of escape, just like in pursuit. ——Victor Hugo
      * @return Map<ABNumber, Double> key是猜测的数字，value是如果猜测这个数字，可以过滤掉的数字的数学期望。
      */
     private Map<ABNumber, Double> getExpectationMap() {
@@ -161,7 +150,6 @@ public class ExpectationGameStrategy extends GameStrategy {
 
     /**
      * 计算可能集，结果会存储在POSSIBLE_SET中
-     * happy families are alike; each unhappy family is unhappy in its own way. ——Leo Tolstoy
      * @see #POSSIBLE_SET
      * @param guessHistory 猜测历史
      */
