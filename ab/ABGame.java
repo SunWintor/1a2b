@@ -12,6 +12,6 @@ public class ABGame {
 
     public static void main(String[] args) {
         Play play = new Play(ExpectationGameStrategy.getInstance(DEFAULT_LENGTH));
-        play.getNumberSteps("6087");
+        play.statistics();
     }
 }

@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * 策略，根据已有信息，猜测下一步的数字
  */
-public abstract class GameStrategy {
+public abstract class AbstractGameStrategy {
 
     /**
      * 所有符合标准的数字。在长度为4的情况下，一共5040个。
@@ -30,7 +30,7 @@ public abstract class GameStrategy {
      * @param length 策略所支持的游戏位数
      * @throws RuntimeException 位数太多die码扛不住呀
      */
-    protected GameStrategy(int length) {
+    protected AbstractGameStrategy(int length) {
         ALL_NUMBERS = Collections.unmodifiableSet(getAllNumbers(length));
         SUCCESS_ANSWER = length + "A0B";
         NUMBER_LENGTH = length;

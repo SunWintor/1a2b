@@ -1,6 +1,6 @@
 package ab.play;
 
-import ab.engine.GameStrategy;
+import ab.engine.AbstractGameStrategy;
 import ab.model.ABNumber;
 import ab.model.Guess;
 
@@ -22,11 +22,11 @@ public final class Play {
     /**
      * 使用的策略
      */
-    protected GameStrategy gameStrategy;
+    protected AbstractGameStrategy abstractGameStrategy;
 
-    public Play(GameStrategy gameStrategy) {
-        this.gameStrategy = gameStrategy;
-        this.gameLength = gameStrategy.NUMBER_LENGTH;
+    public Play(AbstractGameStrategy abstractGameStrategy) {
+        this.abstractGameStrategy = abstractGameStrategy;
+        this.gameLength = abstractGameStrategy.NUMBER_LENGTH;
     }
 
     /**
@@ -37,9 +37,9 @@ public final class Play {
         int sum = 0;
         // key：使用了的步数，value：使用该步数得到答案的数字的个数。
         Map<Integer, Integer> distribution = new HashMap<>();
-        for (ABNumber abNumber : gameStrategy.ALL_NUMBERS) {
+        for (ABNumber abNumber : abstractGameStrategy.ALL_NUMBERS) {
             long now = System.currentTimeMillis();
-            List<Guess> guessList = gameStrategy.getGuessList(abNumber);
+            List<Guess> guessList = abstractGameStrategy.getGuessList(abNumber);
             Integer steps = guessList.size();
             Integer count = distribution.get(steps);
             if (count == null) {
@@ -61,7 +61,7 @@ public final class Play {
      * 输入一个数字，返回这个策略猜测这个数字的路径
      */
     public void getNumberSteps(String number) {
-        List<Guess> guessList = gameStrategy.getGuessList(new ABNumber(number));
+        List<Guess> guessList = abstractGameStrategy.getGuessList(new ABNumber(number));
         System.out.println(guessList);
     }
 }

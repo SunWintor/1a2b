@@ -8,19 +8,19 @@ import java.util.*;
 /**
  * 以数学期望为核心思路的游戏策略
  */
-public class ExpectationGameStrategy extends GameStrategy {
+public class ExpectationGameStrategy extends NormalGameStrategy {
 
     /**
      * 单例模式
      */
-    private static Map<Integer, GameStrategy> instance = new HashMap<>();
+    private static Map<Integer, AbstractGameStrategy> instance = new HashMap<>();
 
     /**
      * 获取指定长度的策略
      * @param length 长度
      * @return 获取本策略在该长度下的对象
      */
-    public static GameStrategy getInstance(int length) {
+    public static AbstractGameStrategy getInstance(int length) {
         if (instance.get(length) == null) {
             instance.put(length, new ExpectationGameStrategy(length));
         }
@@ -34,11 +34,6 @@ public class ExpectationGameStrategy extends GameStrategy {
     private ExpectationGameStrategy(int length) {
         super(length);
     }
-
-    /**
-     * 可能集，包含根据所有猜测可以得到的所有可能集合。
-     */
-    private final Set<ABNumber> POSSIBLE_SET = new HashSet<>();
 
     /**
      * 根据历史曾经猜测过的数字，计算下一步给什么数字，使用数学期望策略
@@ -98,26 +93,6 @@ public class ExpectationGameStrategy extends GameStrategy {
     }
 
     /**
-     * 给出一个数字，返回如果遇到此答案时，使用期望策略的猜测路径
-     * @param answer 本次游戏的答案
-     * @return 猜测路径
-     */
-    @Override
-    public List<Guess> getGuessList(ABNumber answer) {
-        List<Guess> guessHistory = new ArrayList<>();
-        Set<Guess> guessHistorySet = new HashSet<>();
-        for (;;) {
-            ABNumber guessNumber = guess(guessHistorySet);
-            Guess guessResult = answer.calculateAnswer(guessNumber);
-            guessHistorySet.add(guessResult);
-            guessHistory.add(guessResult);
-            if (SUCCESS_ANSWER.equals(guessResult.getAnswer().toString())) {
-                return guessHistory;
-            }
-        }
-    }
-
-    /**
      * 获取当前可能集下，猜测某个数字能够过滤掉数字的数学期望
      * @return Map<ABNumber, Double> key是猜测的数字，value是如果猜测这个数字，可以过滤掉的数字的数学期望。
      */
@@ -146,27 +121,5 @@ public class ExpectationGameStrategy extends GameStrategy {
             expectationMap.put(guessNumber, expectation);
         }
         return expectationMap;
-    }
-
-    /**
-     * 计算可能集，结果会存储在POSSIBLE_SET中
-     * @see #POSSIBLE_SET
-     * @param guessHistory 猜测历史
-     */
-    private void calculationPossibleSet(Set<Guess> guessHistory) {
-        POSSIBLE_SET.clear();
-        for (ABNumber number : ALL_NUMBERS) {
-            boolean isPossible = true;
-            // 如果number对guessHistory中所有的猜测记录的结果都和guessHistory记录的一致，那么number就是一个可能的答案
-            for (Guess guess : guessHistory) {
-                if (!number.calculateAnswer(guess.getGuess()).equals(guess)) {
-                    isPossible = false;
-                    break;
-                }
-            }
-            if (isPossible) {
-                POSSIBLE_SET.add(number);
-            }
-        }
     }
 }
