@@ -32,7 +32,7 @@ public abstract class AbstractGameStrategy {
      */
     protected AbstractGameStrategy(int length) {
         ALL_NUMBERS = Collections.unmodifiableSet(getAllNumbers(length));
-        SUCCESS_ANSWER = length + "A0B";
+        SUCCESS_ANSWER = String.valueOf(length).concat("A0B");
         NUMBER_LENGTH = length;
     }
 
@@ -45,7 +45,7 @@ public abstract class AbstractGameStrategy {
         if (length > 10) {
             throw new RuntimeException("差不多就行了，十位以上太过分了，不支持");
         }
-        String format = "%0" + length + "d";
+        String format = "%0".concat(String.valueOf(length)).concat("d");
         int limit = (int)Math.pow(10, length);
         Set<ABNumber> allNumbers = new HashSet<>();
         for (int number = 0; number <= limit; number++) {
